@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <!--
+    Done/Fixed:
+        - Update css to automatically capture content area and apply appropriate ss. Remove all 'class' from content area tags (like <hr/>)
     Todo:
-        [x] Update css to automatically capture content area and apply appropriate ss. Remove all 'class' from content area tags (like <hr/>)
+        - Design Like/Dislike buttons
+        - Gmail doesn't support shadows. Make things look not bad in gmail
+        - Outook renders thead image in mobile
 -->
 <head>
     <meta charset="utf-8" />
@@ -22,16 +26,20 @@
             background-color: #ffffff;
         }
 
-        h1,
-        h2 {
+        h1 {
             color: #FC6600;
+            font-family: "Georgia", serif;
+        }
+
+        h2 {
+            color: #333030;
             font-family: "Georgia", serif;
         }
         
         hr {
             width: 20%;
             height: 2px;
-            background-color: #515151;
+            background-color: #333030;
         }
 
         img {
@@ -57,7 +65,7 @@
         }
 
         thead {
-            background-image: url("http://127.0.0.1:4000/KnowledgeDay/assets/img/chocolates.jpg");
+            background-image: url("{{ issue.hero }}");
             background-repeat: no-repeat;
             background-size: cover;
             height: 400px;
@@ -65,6 +73,10 @@
             
             box-shadow:  13px 13px 26px #b3b3b3, 
              -13px -13px 26px #ffffff;
+        }
+
+        tfoot {
+            background-color: #efefef;
         }
 
         tr p span {
@@ -95,12 +107,12 @@
         .dot-separator {
             width: 7px;
             height: 7px;
-            background-color: #515151;
+            background-color: #333030;
         }
 
         .button {
             padding: 8px;
-            border-radius: 12px;
+            border-radius: 2px;
             border: none;
             color: white;
             text-align: center;
@@ -202,22 +214,25 @@
         <tbody>
             <tr>
                 <td>
-                    {{ content.header }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ content.body }}
                     <br />
-                </td>
-            </tr>
-            <tr>
-                <td>
-
+                    {{ issue.content }}
                 </td>
             </tr>
         </tbody>
         <tfoot>
+            <tr>
+                <td>
+                    <p style="text-align: center;">
+                        <span>
+                            Like the issue? Let me know.
+                        </span>
+                    </p>
+                    <p style="text-align: center;">
+                        <a href="" class="button" style="background-color: #fefefe;font-size: 20px;margin-top: 0px;"></a>&nbsp;&nbsp;
+                        <a href="" class="button" style="background-color: #fefefe;font-size: 20px;margin-top: 0px;"></a>
+                    </p>
+                </td>
+            </tr>
             <tr class="author-details">
                 <td class="center-align">
                     <img src="https://ohyash.github.io/KnowledgeDay/assets/img/KD_profile.jpg"
